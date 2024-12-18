@@ -11,6 +11,27 @@ contract TicTacToe {
     */
 
     function isWinning(uint8[3][3] memory board) public pure returns (bool) {
-        // your code here
+        // column 0
+        if (isEqual(board[0][0], board[0][1], board[0][2])) return true;
+        // column 1
+        if (isEqual(board[1][0], board[1][1], board[1][2])) return true;
+        // column 2
+        if (isEqual(board[2][0], board[2][1], board[2][2])) return true;
+        // row 0
+        if (isEqual(board[0][0], board[1][0], board[2][0])) return true;
+        // row 1
+        if (isEqual(board[0][1], board[1][1], board[2][1])) return true;
+        // row 2
+        if (isEqual(board[0][2], board[1][2], board[2][2])) return true;
+        // diagonal desc
+        if (isEqual(board[0][0], board[1][1], board[2][2])) return true;
+        // diagonal asc
+        if (isEqual(board[0][2], board[1][1], board[2][0])) return true;
+        // not winning
+        return false;
+    }
+
+    function isEqual(uint256 x, uint256 y, uint256 z) private pure returns (bool) {
+        return x == y && y == z;
     }
 }
